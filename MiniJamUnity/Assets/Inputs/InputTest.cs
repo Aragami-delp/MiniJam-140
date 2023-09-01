@@ -15,7 +15,10 @@ public class InputTest : MonoBehaviour
     private GameObject crosshair,realCannon;
 
     [SerializeField]
-    private float maxMoveDistance;
+    private float speed = 10;
+    
+    [SerializeField]
+    private float distanceForHighestSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +52,14 @@ public class InputTest : MonoBehaviour
 
         float distance =  Vector3.Distance(mouseToWorld, realCannon.transform.position);
 
-        realCannon.transform.position = Vector3.MoveTowards(realCannon.transform.position, mouseToWorld, maxMoveDistance * Time.deltaTime);
+        float normalizedDistance = Math.Clamp(distance, 1 , distanceForHighestSpeed) / distanceForHighestSpeed;
+
+        realCannon.transform.position = Vector3.MoveTowards(realCannon.transform.position, mouseToWorld, CalcSpeed(normalizedDistance) * speed * Time.deltaTime);
     }
+
+    private float CalcSpeed(float distance)
+    {
+        return (float)Math.Sin((distance * Math.PI) / 2);
+    } 
 
 }
