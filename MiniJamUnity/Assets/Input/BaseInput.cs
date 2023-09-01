@@ -35,6 +35,15 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""04ac6972-5644-4657-bdcc-00ffc6df42e9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -59,6 +68,17 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81f6950a-8e09-4921-b6d1-4fd824010ec6"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -68,6 +88,7 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
         // CartInput
         m_CartInput = asset.FindActionMap("CartInput", throwIfNotFound: true);
         m_CartInput_Shoot = m_CartInput.FindAction("Shoot", throwIfNotFound: true);
+        m_CartInput_MousePosition = m_CartInput.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,11 +151,13 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CartInput;
     private List<ICartInputActions> m_CartInputActionsCallbackInterfaces = new List<ICartInputActions>();
     private readonly InputAction m_CartInput_Shoot;
+    private readonly InputAction m_CartInput_MousePosition;
     public struct CartInputActions
     {
         private @BaseInput m_Wrapper;
         public CartInputActions(@BaseInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_CartInput_Shoot;
+        public InputAction @MousePosition => m_Wrapper.m_CartInput_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_CartInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -147,6 +170,9 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(ICartInputActions instance)
@@ -154,6 +180,9 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(ICartInputActions instance)
@@ -174,5 +203,6 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
     public interface ICartInputActions
     {
         void OnShoot(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }

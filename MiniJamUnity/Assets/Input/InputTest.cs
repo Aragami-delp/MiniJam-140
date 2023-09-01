@@ -8,6 +8,9 @@ public class InputTest : MonoBehaviour
 {
     BaseInput inputs;
     BaseInput.CartInputActions cartInput;
+
+    Camera mainCam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,8 @@ public class InputTest : MonoBehaviour
         cartInput.Enable();
 
         cartInput.Shoot.performed += TestPrint;
+
+        mainCam = Camera.main;
     }
 
     private void TestPrint(InputAction.CallbackContext obj)
@@ -27,6 +32,7 @@ public class InputTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(mainCam.ScreenToWorldPoint(cartInput.MousePosition.ReadValue<Vector2>()));
     }
+
 }
