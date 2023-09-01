@@ -1,0 +1,45 @@
+{
+    "name": "BaseInput",
+    "maps": [
+        {
+            "name": "CartInput",
+            "id": "40c7f4c6-d063-4f3e-9401-1ef6f331a11a",
+            "actions": [
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "bddc30aa-f643-4be6-8135-23bb895ed16a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "891aa0b9-8dcc-45d9-ae23-b9f22c9d5425",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c880cd29-cbbc-4150-8db2-05ae31d633bd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
