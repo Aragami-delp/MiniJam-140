@@ -48,6 +48,9 @@ TagManager:
   - name: Enemies
     uniqueID: 1878368235
     locked: 0
+  - name: Rails
+    uniqueID: 712072899
+    locked: 0
   - name: Player
     uniqueID: 2253036625
     locked: 0
