@@ -35,7 +35,7 @@ public class Monster : MonoBehaviour
             if (potionsHit >= potionsNeeded) 
             {
                 HasBeenHit = true;
-                ScoreSystem.Instance.IncreaseScore();
+                UISystem.Instance.IncreaseScore();
                 transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = onHitSpride;
             }
         }
