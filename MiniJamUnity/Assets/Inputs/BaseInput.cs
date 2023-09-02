@@ -44,6 +44,51 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchToPotion1"",
+                    ""type"": ""Button"",
+                    ""id"": ""e352ec71-4db6-4482-b2b7-135188a16cc3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToPotion2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8b13e99-5348-4d75-8163-0d990ef49aaa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToPotion3"",
+                    ""type"": ""Button"",
+                    ""id"": ""6aa66967-6fe6-48be-8709-42793ffca6e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToPotion4"",
+                    ""type"": ""Button"",
+                    ""id"": ""f52d647b-daa3-45af-bc2f-3ff1b3f1517f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToNextPotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""f2a599b4-4151-4b19-825c-4acb4ff2a7dc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -79,6 +124,61 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1aaa04f-ea1d-484c-b6bf-49188d042f97"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToPotion1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35c69cfb-747d-4a88-87a1-eb3a6bfba64c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToPotion2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a953e12d-fa0b-49e2-bec1-ed13fcd0c3ba"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToPotion3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12c125b9-92d5-47b6-99a5-5fc1ccb81d99"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToPotion4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e70ebc98-70c7-4917-b701-0aaf28ced991"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToNextPotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +189,11 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
         m_CartInput = asset.FindActionMap("CartInput", throwIfNotFound: true);
         m_CartInput_Shoot = m_CartInput.FindAction("Shoot", throwIfNotFound: true);
         m_CartInput_MousePosition = m_CartInput.FindAction("MousePosition", throwIfNotFound: true);
+        m_CartInput_SwitchToPotion1 = m_CartInput.FindAction("SwitchToPotion1", throwIfNotFound: true);
+        m_CartInput_SwitchToPotion2 = m_CartInput.FindAction("SwitchToPotion2", throwIfNotFound: true);
+        m_CartInput_SwitchToPotion3 = m_CartInput.FindAction("SwitchToPotion3", throwIfNotFound: true);
+        m_CartInput_SwitchToPotion4 = m_CartInput.FindAction("SwitchToPotion4", throwIfNotFound: true);
+        m_CartInput_SwitchToNextPotion = m_CartInput.FindAction("SwitchToNextPotion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -152,12 +257,22 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
     private List<ICartInputActions> m_CartInputActionsCallbackInterfaces = new List<ICartInputActions>();
     private readonly InputAction m_CartInput_Shoot;
     private readonly InputAction m_CartInput_MousePosition;
+    private readonly InputAction m_CartInput_SwitchToPotion1;
+    private readonly InputAction m_CartInput_SwitchToPotion2;
+    private readonly InputAction m_CartInput_SwitchToPotion3;
+    private readonly InputAction m_CartInput_SwitchToPotion4;
+    private readonly InputAction m_CartInput_SwitchToNextPotion;
     public struct CartInputActions
     {
         private @BaseInput m_Wrapper;
         public CartInputActions(@BaseInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_CartInput_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_CartInput_MousePosition;
+        public InputAction @SwitchToPotion1 => m_Wrapper.m_CartInput_SwitchToPotion1;
+        public InputAction @SwitchToPotion2 => m_Wrapper.m_CartInput_SwitchToPotion2;
+        public InputAction @SwitchToPotion3 => m_Wrapper.m_CartInput_SwitchToPotion3;
+        public InputAction @SwitchToPotion4 => m_Wrapper.m_CartInput_SwitchToPotion4;
+        public InputAction @SwitchToNextPotion => m_Wrapper.m_CartInput_SwitchToNextPotion;
         public InputActionMap Get() { return m_Wrapper.m_CartInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -173,6 +288,21 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @SwitchToPotion1.started += instance.OnSwitchToPotion1;
+            @SwitchToPotion1.performed += instance.OnSwitchToPotion1;
+            @SwitchToPotion1.canceled += instance.OnSwitchToPotion1;
+            @SwitchToPotion2.started += instance.OnSwitchToPotion2;
+            @SwitchToPotion2.performed += instance.OnSwitchToPotion2;
+            @SwitchToPotion2.canceled += instance.OnSwitchToPotion2;
+            @SwitchToPotion3.started += instance.OnSwitchToPotion3;
+            @SwitchToPotion3.performed += instance.OnSwitchToPotion3;
+            @SwitchToPotion3.canceled += instance.OnSwitchToPotion3;
+            @SwitchToPotion4.started += instance.OnSwitchToPotion4;
+            @SwitchToPotion4.performed += instance.OnSwitchToPotion4;
+            @SwitchToPotion4.canceled += instance.OnSwitchToPotion4;
+            @SwitchToNextPotion.started += instance.OnSwitchToNextPotion;
+            @SwitchToNextPotion.performed += instance.OnSwitchToNextPotion;
+            @SwitchToNextPotion.canceled += instance.OnSwitchToNextPotion;
         }
 
         private void UnregisterCallbacks(ICartInputActions instance)
@@ -183,6 +313,21 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @SwitchToPotion1.started -= instance.OnSwitchToPotion1;
+            @SwitchToPotion1.performed -= instance.OnSwitchToPotion1;
+            @SwitchToPotion1.canceled -= instance.OnSwitchToPotion1;
+            @SwitchToPotion2.started -= instance.OnSwitchToPotion2;
+            @SwitchToPotion2.performed -= instance.OnSwitchToPotion2;
+            @SwitchToPotion2.canceled -= instance.OnSwitchToPotion2;
+            @SwitchToPotion3.started -= instance.OnSwitchToPotion3;
+            @SwitchToPotion3.performed -= instance.OnSwitchToPotion3;
+            @SwitchToPotion3.canceled -= instance.OnSwitchToPotion3;
+            @SwitchToPotion4.started -= instance.OnSwitchToPotion4;
+            @SwitchToPotion4.performed -= instance.OnSwitchToPotion4;
+            @SwitchToPotion4.canceled -= instance.OnSwitchToPotion4;
+            @SwitchToNextPotion.started -= instance.OnSwitchToNextPotion;
+            @SwitchToNextPotion.performed -= instance.OnSwitchToNextPotion;
+            @SwitchToNextPotion.canceled -= instance.OnSwitchToNextPotion;
         }
 
         public void RemoveCallbacks(ICartInputActions instance)
@@ -204,5 +349,10 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnSwitchToPotion1(InputAction.CallbackContext context);
+        void OnSwitchToPotion2(InputAction.CallbackContext context);
+        void OnSwitchToPotion3(InputAction.CallbackContext context);
+        void OnSwitchToPotion4(InputAction.CallbackContext context);
+        void OnSwitchToNextPotion(InputAction.CallbackContext context);
     }
 }

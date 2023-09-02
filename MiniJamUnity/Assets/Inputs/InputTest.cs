@@ -11,14 +11,37 @@ public class InputTest : MonoBehaviour
 
     Camera mainCam;
 
+    public class PotionEventArgs 
+    {
+        public PotionEventArgs(int newPotion, GameObject newPotionPrefab)
+        {
+            NewPotion = newPotion;
+            this.newPotionPrefab = newPotionPrefab;
+        }
+
+        public int NewPotion { get; }
+        public GameObject newPotionPrefab { get; }
+    }
+
+    public static event EventHandler<PotionEventArgs> OnPotionChange;
+
     [SerializeField]
-    private GameObject crosshair,realCannon;
+    private GameObject crosshair,realCannon,gunBarrel;
+
+    [SerializeField]
+    private GameObject[] potionPrefabs;
 
     [SerializeField]
     private float speed = 10;
     
     [SerializeField]
     private float distanceForHighestSpeed = 10;
+
+    [SerializeField]
+    private PotionTypes selectedPotion;
+
+    [SerializeField]
+    private AnimationCurve throwingCurve;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +53,70 @@ public class InputTest : MonoBehaviour
 
         cartInput.Shoot.performed += TestPrint;
 
+
+        cartInput.SwitchToPotion1.performed += ChangePotion1;
+        cartInput.SwitchToPotion2.performed += ChangePotion2;
+        cartInput.SwitchToPotion3.performed += ChangePotion3;
+        cartInput.SwitchToPotion4.performed += ChangePotion4;
+        cartInput.SwitchToNextPotion.performed += ChangeNextPotion;
+
         mainCam = Camera.main;
+
+        Cursor.visible = false;
+
+    }
+    #region dont look
+    private void ChangeNextPotion(InputAction.CallbackContext obj)
+    {
+
+        if (Enum.GetValues(typeof(PotionTypes)).Length == (int) selectedPotion + 1)
+        {
+            ChangePotion(PotionTypes.WRAITH_POTION);
+        }
+        else 
+        {
+
+            ChangePotion((PotionTypes)((int)selectedPotion + 1));
+        }
+    }
+
+    private void ChangePotion1(InputAction.CallbackContext obj)
+    {
+        ChangePotion(PotionTypes.WRAITH_POTION);
+    }
+    private void ChangePotion2(InputAction.CallbackContext obj)
+    {
+        ChangePotion(PotionTypes.SLIME_PORTION);
+    }
+    private void ChangePotion3(InputAction.CallbackContext obj)
+    {
+        ChangePotion(PotionTypes.ZOMBIE_POTION);
+    }
+    private void ChangePotion4(InputAction.CallbackContext obj)
+    {
+        ChangePotion(PotionTypes.GOLEM_POTION);
+    }
+    #endregion
+
+    private void ChangePotion(PotionTypes newPotion) 
+    {
+        selectedPotion = newPotion;
+        OnPotionChange?.Invoke(this,  new PotionEventArgs((int)selectedPotion, potionPrefabs[(int)selectedPotion]));
+
+        Debug.Log("ChangePotion fired");
     }
 
     private void TestPrint(InputAction.CallbackContext obj)
     {
-        Debug.Log("Test Shoot Performed");
+        Vector3 rayStart =  realCannon.transform.position;
+
+        RaycastHit2D hitData =  Physics2D.Raycast(rayStart,Vector3.forward);
+
+        Debug.Log(hitData.point);
+
+        GameObject newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion] ,gunBarrel.transform.position,transform.rotation);
+        newPotion.GetComponent<Throwable>().target = hitData.point;
+
     }
 
     // Update is called once per frame
@@ -61,5 +142,15 @@ public class InputTest : MonoBehaviour
     {
         return (float)Math.Sin((distance * Math.PI) / 2);
     } 
+
+}
+
+
+public enum PotionTypes
+{
+    WRAITH_POTION,
+    SLIME_PORTION,
+    ZOMBIE_POTION,
+    GOLEM_POTION
 
 }

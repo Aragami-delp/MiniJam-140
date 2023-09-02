@@ -13,7 +13,7 @@ public class GunFollow : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
 
-        angle = Mathf.Clamp(angle,-75f,75f);
+        angle = Mathf.Clamp(angle,-75f,90f);
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle ));
     }
