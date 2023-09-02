@@ -20,6 +20,8 @@ public class MonsterSpawner : MonoBehaviour
     
     [SerializeField]
     private int monsterOnScreen;
+
+    private int monsterToSpawnNumber;
     public int MonsterOnScreen { get { return monsterOnScreen; } set { OnMonsterChange(value); } }
 
    
@@ -28,10 +30,8 @@ public class MonsterSpawner : MonoBehaviour
         monsterOnScreen = newOnScreen;
         int freeSpace = monsterLimit - monsterOnScreen;
 
-        for (int i = 0; i < freeSpace; i++)
-        {
-            StartCoroutine(SpawnMonster());
-        }
+
+        monsterToSpawnNumber = freeSpace;
     }
 
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class MonsterSpawner : MonoBehaviour
 
         spawnArea = GetComponent<BoxCollider2D>();
         MonsterOnScreen = 0;
+
     }
 
     private void OnMonsterCleaned(object sender, bool wasHit)
@@ -49,9 +50,62 @@ public class MonsterSpawner : MonoBehaviour
         MonsterOnScreen--;
     }
 
-    private IEnumerator SpawnMonster() 
+    private IEnumerator SpawnMonster(int timesToRun) 
     {
-        float spawnAreaX =  spawnArea.size.x / 2;
+        for (int i = 0; i < timesToRun; i++)
+        {
+
+
+            float spawnAreaX = spawnArea.size.x / 2;
+            float spawnAreaY = spawnArea.size.y / 2;
+
+            Vector3 spawnPoint = Vector3.zero;
+            bool freeSpawn;
+
+            GameObject enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
+
+            Vector2 colliderSize = enemyToSpawn.GetComponent<BoxCollider2D>().size * enemyToSpawn.transform.localScale;
+
+            Debug.Log(colliderSize);
+
+            do
+            {
+                freeSpawn = true;
+                spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
+                spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
+
+                Collider2D[] hits = Physics2D.OverlapBoxAll(spawnPoint, colliderSize, transform.eulerAngles.z);
+
+
+                foreach (Collider2D hit in hits)
+                {
+                    if (hit.tag == "Enemy")
+                    {
+                        freeSpawn = false;
+                        Debug.Log("Fuckter spawn");
+                    }
+                }
+
+                yield return new WaitForSeconds(0.5f);
+
+            }
+            while (!freeSpawn);
+
+
+            GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position, transform.rotation, backgroundParent);
+
+            monsterOnScreen++;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (monsterToSpawnNumber <= 0) 
+        {
+            return;
+        }
+
+        float spawnAreaX = spawnArea.size.x / 2;
         float spawnAreaY = spawnArea.size.y / 2;
 
         Vector3 spawnPoint = Vector3.zero;
@@ -59,9 +113,11 @@ public class MonsterSpawner : MonoBehaviour
 
         GameObject enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
 
-        Vector2 colliderSize = enemyToSpawn.GetComponent<BoxCollider2D>().size * enemyToSpawn.transform.localScale;
+        Vector2 colliderSize = enemyToSpawn.transform.GetComponent<BoxCollider2D>().size;
 
         Debug.Log(colliderSize);
+
+        int timesIterated = 0;
 
         do
         {
@@ -69,28 +125,31 @@ public class MonsterSpawner : MonoBehaviour
             spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
             spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
 
-            Collider2D[] hits =  Physics2D.OverlapBoxAll(spawnPoint, colliderSize, 0f);
-               
+            Collider2D[] hits = Physics2D.OverlapBoxAll(spawnPoint, colliderSize * 2f , transform.eulerAngles.z);
+
+            timesIterated++;
+
+            if (timesIterated >= 20) 
+            {
+                Debug.Log("Too many tries spawning Monster. Skip!");
+                break;
+            }
 
             foreach (Collider2D hit in hits)
             {
-                if (hit.tag == "Enemy") 
+                if (hit.tag == "Enemy")
                 {
                     freeSpawn = false;
-                    Debug.Log("Fuckter spawn");
                 }
             }
 
-            yield return new WaitForSeconds(0.5f);
-        } 
-        while(!freeSpawn);
+        }
+        while (!freeSpawn);
 
 
-        GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position ,transform.rotation, backgroundParent);
-        
+        GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position, transform.rotation, backgroundParent);
+
         monsterOnScreen++;
+        monsterToSpawnNumber--;
     }
-
-
-
 }

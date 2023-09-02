@@ -367,7 +367,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 628972854475880406, guid: 9cb5e6816d2ff6b46a9ada1dbd6a3c31, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 628972854475880406, guid: 9cb5e6816d2ff6b46a9ada1dbd6a3c31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -485,7 +485,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1971010895}
     m_Modifications:
     - target: {fileID: -5543996678936376488, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
       propertyPath: m_Controller
@@ -495,9 +495,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 2869166302037129313, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869166302037129313, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7468300647242861304, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468300647242861304, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7468300647242861304, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7468300647242861304, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -539,7 +555,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3666956332658003976, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7468300647242861304, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
@@ -1133,7 +1150,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6421908221342586446, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2095674648}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
 --- !u!1001 &1787837470
@@ -1150,7 +1170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889242844584162521, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4889242844584162521, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1223,7 +1243,7 @@ Transform:
   m_GameObject: {fileID: 1910138703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2095674648}
@@ -1365,6 +1385,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1971010895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6421908221342586446, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
+  m_PrefabInstance: {fileID: 1764632046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984103546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1442,7 @@ MonoBehaviour:
   - {fileID: 5529672182160577471, guid: 9a56d223e10422e44957fecaf8fdb976, type: 3}
   - {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
   - {fileID: 2122104438040692464, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
-  monsterLimit: 3
+  monsterLimit: 6
   monsterOnScreen: 0
 --- !u!61 &1984103549
 BoxCollider2D:

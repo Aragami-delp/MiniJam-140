@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator),typeof(Collider2D))]
 public class Monster : MonoBehaviour
 {
     [SerializeField]
@@ -17,8 +18,10 @@ public class Monster : MonoBehaviour
     private bool hasBeenHit = false;
 
     [Header("Animations")]
+
     [SerializeField]
-    private float animationIntensity;
+    private Sprite onHitSpride;
+
     public bool HasBeenHit { get { return hasBeenHit; } private set { hasBeenHit = value; } }
     
     public void OnPotionHit(PotionTypes potionHitBy) 
@@ -33,6 +36,7 @@ public class Monster : MonoBehaviour
             {
                 HasBeenHit = true;
                 ScoreSystem.Instance.IncreaseScore();
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = onHitSpride;
             }
         }
     }
