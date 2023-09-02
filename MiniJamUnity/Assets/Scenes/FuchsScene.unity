@@ -413,6 +413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 3451650296701190741, guid: 9cb5e6816d2ff6b46a9ada1dbd6a3c31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1229,6 +1233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wraith
       objectReference: {fileID: 0}
+    - target: {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4889242844584162521, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1537,7 +1545,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0041503906, y: -0.16755486}
+  m_Offset: {x: -0.0041503906, y: 0.056911647}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1548,7 +1556,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.834694, y: 2.586185}
+  m_Size: {x: 17.834694, y: 2.1372519}
   m_EdgeRadius: 0
 --- !u!4 &2095674648 stripped
 Transform:
