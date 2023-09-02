@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputTest : MonoBehaviour
+public class PlayerControlls : MonoBehaviour
 {
     BaseInput inputs;
     BaseInput.CartInputActions cartInput;

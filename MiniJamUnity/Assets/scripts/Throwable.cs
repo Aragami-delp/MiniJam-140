@@ -10,7 +10,11 @@ public class Throwable : MonoBehaviour
 
     [SerializeField]
     private float curveAmount;
-    
+
+    [SerializeField]
+    [Range(1f,4f)]
+    private float potionSplashRange;
+
     [SerializeField]
     public Vector3 target;
 
@@ -44,12 +48,26 @@ public class Throwable : MonoBehaviour
         transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.7f, curveTime);
 
         // amount to sway to the right
-       transform.localPosition = transform.localPosition +  Vector3.left * (throwingCurve.Evaluate(curveTime) * curveAmount * 2 );  
+       transform.localPosition = transform.localPosition +  Vector3.left * (throwingCurve.Evaluate(curveTime) * curveAmount * 2 );
 
-        if (curveTime > 1) 
+        if (curveTime > 1)
         {
             GameObject.Destroy(gameObject);
+            Explode();
         }
 
+    }
+
+    private void Explode()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, potionSplashRange);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].tag == "Enemy") 
+            {
+                Debug.Log("Enemy Hit");
+            }
+        }
     }
 }

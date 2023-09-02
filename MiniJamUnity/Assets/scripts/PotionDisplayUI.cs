@@ -7,10 +7,10 @@ public class PotionDisplayUI : MonoBehaviour
 {
     private void Start()
     {
-        InputTest.OnPotionChange += OnPotionChange;
+        PlayerControlls.OnPotionChange += OnPotionChange;
     }
 
-    private void OnPotionChange(object sender, InputTest.PotionEventArgs args)
+    private void OnPotionChange(object sender, PlayerControlls.PotionEventArgs args)
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = args.newPotionPrefab.GetComponent<SpriteRenderer>().sprite;
 
