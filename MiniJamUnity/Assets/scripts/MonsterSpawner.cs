@@ -20,12 +20,15 @@ public class MonsterSpawner : MonoBehaviour
     
     [SerializeField]
     private int monsterOnScreen;
-    public int MonsterOnScreen { get { return monsterOnScreen; } set { OnMonsterChange(monsterLimit - value); } }
+    public int MonsterOnScreen { get { return monsterOnScreen; } set { OnMonsterChange(value); } }
 
    
-    private void OnMonsterChange(int freeSpace)
+    private void OnMonsterChange(int newOnScreen)
     {
-        for (int i = 0; i <= freeSpace; i++)
+        monsterOnScreen = newOnScreen;
+        int freeSpace = monsterLimit - monsterOnScreen;
+
+        for (int i = 0; i < freeSpace; i++)
         {
             SpawnMonster();
         }
@@ -34,8 +37,16 @@ public class MonsterSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MonsterCleaning.OnMonsterDestroyed += OnMonsterCleaned;
+
         spawnArea = GetComponent<BoxCollider2D>();
         MonsterOnScreen = 0;
+    }
+
+    private void OnMonsterCleaned(object sender, EventArgs e)
+    {
+        Debug.Log("Clean event fired");
+        MonsterOnScreen--;
     }
 
     private void SpawnMonster() 
@@ -44,13 +55,37 @@ public class MonsterSpawner : MonoBehaviour
         float spawnAreaY = spawnArea.size.y / 2;
 
         Vector3 spawnPoint = Vector3.zero;
-
-        spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
-        spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
+        bool freeSpawn;
 
         GameObject enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
 
+        Vector2 colliderSize = enemyToSpawn.GetComponent<BoxCollider2D>().size * enemyToSpawn.transform.localScale;
+
+        Debug.Log(colliderSize);
+
+        do
+        {
+            freeSpawn = true;
+            spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
+            spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
+
+            Collider2D[] hits =  Physics2D.OverlapBoxAll(spawnPoint + Vector3.back, colliderSize, 0f);
+
+
+            foreach (Collider2D hit in hits)
+            {
+                if (hit.tag == "Enemy") 
+                {
+                    freeSpawn = false;
+                }
+            }
+            
+        } 
+        while(!freeSpawn);
+
+
         GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position ,transform.rotation, backgroundParent);
+        
         monsterOnScreen++;
     }
 

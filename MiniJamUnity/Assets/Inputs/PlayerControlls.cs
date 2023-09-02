@@ -43,6 +43,13 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField]
     private AnimationCurve throwingCurve;
 
+    [SerializeField]
+    private bool weaponCanFire = true;
+    
+    [SerializeField]
+    [Range(0.25f, 10f)]
+    private float cannonCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +58,7 @@ public class PlayerControlls : MonoBehaviour
 
         cartInput.Enable();
 
-        cartInput.Shoot.performed += TestPrint;
+        cartInput.Shoot.performed += ShootCannon;
 
 
         cartInput.SwitchToPotion1.performed += ChangePotion1;
@@ -106,17 +113,32 @@ public class PlayerControlls : MonoBehaviour
         Debug.Log("ChangePotion fired");
     }
 
-    private void TestPrint(InputAction.CallbackContext obj)
+
+    private void ShootCannon(InputAction.CallbackContext obj)
     {
+        if (!weaponCanFire)
+        {
+            return;
+        }
+        else 
+        {
+            weaponCanFire = false;
+        }
+
         Vector3 rayStart =  realCannon.transform.position;
 
         RaycastHit2D hitData =  Physics2D.Raycast(rayStart,Vector3.forward);
 
-        Debug.Log(hitData.point);
-
         GameObject newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion] ,gunBarrel.transform.position,transform.rotation);
         newPotion.GetComponent<Throwable>().target = hitData.point;
 
+        StartCoroutine(CannonCooldownTimer());
+    }
+
+    private IEnumerator CannonCooldownTimer() 
+    {
+        yield return new WaitForSeconds(cannonCooldown);
+        weaponCanFire = true;
     }
 
     // Update is called once per frame

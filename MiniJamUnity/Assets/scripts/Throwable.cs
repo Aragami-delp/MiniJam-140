@@ -6,7 +6,7 @@ using UnityEngine;
 public class Throwable : MonoBehaviour
 {
     [SerializeField]
-    private AnimationCurve throwingCurve,b;
+    private AnimationCurve throwingCurve, speedCurve;
 
     [SerializeField]
     private float curveAmount;
@@ -29,13 +29,13 @@ public class Throwable : MonoBehaviour
         origin = transform.position;
         curveTime = 0;
 
-        unitsToTravel = Vector3.Distance(origin,target) * 1.5f;
+        unitsToTravel = Vector3.Distance(origin,target) * 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        curveTime +=  Time.deltaTime * 6 / unitsToTravel;
+        curveTime +=  Time.deltaTime * 8 / unitsToTravel;
 
 
         //Move to target
@@ -43,7 +43,7 @@ public class Throwable : MonoBehaviour
 
         //transform.position = Vector3.MoveTowards(transform.position, target, CalcSpeed(curveTime / 1f) * Time.deltaTime * 10);
 
-        transform.position = Vector3.Lerp(origin,target,b.Evaluate(curveTime));
+        transform.position = Vector3.Lerp(origin,target,speedCurve.Evaluate(curveTime));
 
         transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.7f, curveTime);
 
