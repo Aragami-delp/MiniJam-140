@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2046066211459829924}
   - component: {fileID: 1525820942274115793}
   - component: {fileID: 1086466448192960452}
-  - component: {fileID: -357369418590777097}
+  - component: {fileID: 8630572667151113387}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2046066211459829924
 SpriteRenderer:
@@ -104,6 +104,7 @@ MonoBehaviour:
   potionsNeeded: 1
   potionsHit: 0
   hasBeenHit: 0
+  animationIntensity: 0
 --- !u!61 &1086466448192960452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,18 +150,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!111 &-357369418590777097
-Animation:
+--- !u!95 &8630572667151113387
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5529672182160577471}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 243b6f59e3770c1468829b6870c402b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

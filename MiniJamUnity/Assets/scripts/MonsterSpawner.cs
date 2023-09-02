@@ -30,7 +30,7 @@ public class MonsterSpawner : MonoBehaviour
 
         for (int i = 0; i < freeSpace; i++)
         {
-            SpawnMonster();
+            StartCoroutine(SpawnMonster());
         }
     }
 
@@ -49,7 +49,7 @@ public class MonsterSpawner : MonoBehaviour
         MonsterOnScreen--;
     }
 
-    private void SpawnMonster() 
+    private IEnumerator SpawnMonster() 
     {
         float spawnAreaX =  spawnArea.size.x / 2;
         float spawnAreaY = spawnArea.size.y / 2;
@@ -69,17 +69,19 @@ public class MonsterSpawner : MonoBehaviour
             spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
             spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
 
-            Collider2D[] hits =  Physics2D.OverlapBoxAll(spawnPoint + Vector3.back, colliderSize, 0f);
-                
+            Collider2D[] hits =  Physics2D.OverlapBoxAll(spawnPoint, colliderSize, 0f);
+               
 
             foreach (Collider2D hit in hits)
             {
                 if (hit.tag == "Enemy") 
                 {
                     freeSpawn = false;
+                    Debug.Log("Fuckter spawn");
                 }
             }
-            
+
+            yield return new WaitForSeconds(0.5f);
         } 
         while(!freeSpawn);
 
@@ -88,5 +90,7 @@ public class MonsterSpawner : MonoBehaviour
         
         monsterOnScreen++;
     }
+
+
 
 }

@@ -13,6 +13,8 @@ public class MonsterCleaning : MonoBehaviour
             if (!collision.gameObject.GetComponent<Monster>().HasBeenHit) 
             {
                 OnMonsterDestroyed?.Invoke(this, false);
+                GameObject.Destroy(collision.gameObject);
+                return;
             }
 
             GameObject.Destroy(collision.gameObject);

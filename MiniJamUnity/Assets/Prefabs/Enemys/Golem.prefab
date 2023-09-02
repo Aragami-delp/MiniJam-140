@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6436505260536671341}
   - component: {fileID: 6764102857954785347}
   - component: {fileID: 708438995935031813}
-  - component: {fileID: 8914174278532876908}
+  - component: {fileID: -2722068350274308885}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Enemy
@@ -104,6 +104,7 @@ MonoBehaviour:
   potionsNeeded: 1
   potionsHit: 0
   hasBeenHit: 0
+  animationIntensity: 0
 --- !u!61 &708438995935031813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,18 +150,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!111 &8914174278532876908
-Animation:
+--- !u!95 &-2722068350274308885
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3451650296701190741}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
