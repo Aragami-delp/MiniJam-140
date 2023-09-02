@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
             if (HasBeenHit) return;
 
             HasBeenHit = true;
-            //Give Points
+            ScoreSystem.Instance.IncreaseScore();
         }
     }
 
