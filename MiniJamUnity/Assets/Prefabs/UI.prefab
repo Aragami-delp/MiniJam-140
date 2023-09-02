@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662f98d86b1c5a64e9c25a59437f7b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scoreDisplay: {fileID: 0}
-  m_gameOverDisplay: {fileID: 0}
+  m_scoreDisplay: {fileID: 438006606661559944}
+  m_gameOverDisplay: {fileID: 4806679576942500756}
 --- !u!1 &4144968102895627982
 GameObject:
   m_ObjectHideFlags: 0
