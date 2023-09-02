@@ -270,7 +270,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5315803225264353171, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
       propertyPath: m_Name
-      value: BackgroundImage
+      value: Scrolling
       objectReference: {fileID: 0}
     - target: {fileID: 7550469017677725295, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
       propertyPath: m_RootOrder
