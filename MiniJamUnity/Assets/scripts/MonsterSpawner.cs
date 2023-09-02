@@ -70,7 +70,7 @@ public class MonsterSpawner : MonoBehaviour
             spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
 
             Collider2D[] hits =  Physics2D.OverlapBoxAll(spawnPoint + Vector3.back, colliderSize, 0f);
-
+                
 
             foreach (Collider2D hit in hits)
             {

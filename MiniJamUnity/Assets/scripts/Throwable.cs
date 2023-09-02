@@ -12,6 +12,8 @@ public class Throwable : MonoBehaviour
     private float curveAmount;
 
     [SerializeField]
+    public PotionTypes potionType;
+    [SerializeField]
     [Range(1f,4f)]
     private float potionSplashRange;
 
@@ -66,7 +68,7 @@ public class Throwable : MonoBehaviour
         {
             if (hits[i].tag == "Enemy") 
             {
-                Debug.Log("Enemy Hit");
+                hits[i].GetComponent<Monster>().OnPotionHit(potionType);
             }
         }
     }

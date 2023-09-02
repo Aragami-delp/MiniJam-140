@@ -131,6 +131,7 @@ public class PlayerControlls : MonoBehaviour
 
         GameObject newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion] ,gunBarrel.transform.position,transform.rotation);
         newPotion.GetComponent<Throwable>().target = hitData.point;
+        newPotion.GetComponent<Throwable>().potionType = selectedPotion;
 
         StartCoroutine(CannonCooldownTimer());
     }
