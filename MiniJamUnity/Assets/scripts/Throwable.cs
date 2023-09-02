@@ -13,6 +13,7 @@ public class Throwable : MonoBehaviour
 
     [SerializeField]
     public PotionTypes potionType;
+    
     [SerializeField]
     [Range(1f,4f)]
     private float potionSplashRange;
@@ -37,7 +38,7 @@ public class Throwable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        curveTime +=  Time.deltaTime * 8 / unitsToTravel;
+        curveTime +=  Time.deltaTime * 14 / unitsToTravel;
 
 
         //Move to target

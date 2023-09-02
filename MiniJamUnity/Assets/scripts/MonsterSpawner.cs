@@ -43,7 +43,7 @@ public class MonsterSpawner : MonoBehaviour
         MonsterOnScreen = 0;
     }
 
-    private void OnMonsterCleaned(object sender, EventArgs e)
+    private void OnMonsterCleaned(object sender, bool wasHit)
     {
         Debug.Log("Clean event fired");
         MonsterOnScreen--;

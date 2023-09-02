@@ -10,7 +10,8 @@ public class ScoreSystem : MonoBehaviour
 
     public static ScoreSystem Instance;
 
-    [ReadOnly] private int m_score;
+    
+    private int m_score;
 
     private void Awake()
     {

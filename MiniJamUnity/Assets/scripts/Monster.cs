@@ -9,10 +9,16 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private bool takesAnyPotion;
+    
+    [SerializeField]
+    private int potionsNeeded = 1,potionsHit;
 
     [SerializeField]
     private bool hasBeenHit = false;
 
+    [Header("Animations")]
+    [SerializeField]
+    private float animationIntensity;
     public bool HasBeenHit { get { return hasBeenHit; } private set { hasBeenHit = value; } }
     
     public void OnPotionHit(PotionTypes potionHitBy) 
@@ -21,8 +27,13 @@ public class Monster : MonoBehaviour
         {
             if (HasBeenHit) return;
 
-            HasBeenHit = true;
-            ScoreSystem.Instance.IncreaseScore();
+            potionsHit++;
+
+            if (potionsHit >= potionsNeeded) 
+            {
+                HasBeenHit = true;
+                ScoreSystem.Instance.IncreaseScore();
+            }
         }
     }
 
