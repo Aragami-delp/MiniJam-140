@@ -7,6 +7,7 @@ public class Scrolling : MonoBehaviour
     [SerializeField, Range(0.1f, 100f)] private float m_speed = .5f;
     [SerializeField] private bool m_moveRight = true;
     [SerializeField] private SpriteRenderer m_background;
+    [SerializeField] private Transform m_resetingTransform;
 
     private Transform cameraTransform;
     private float textureSizeX;
@@ -25,8 +26,8 @@ public class Scrolling : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x) >= textureSizeX)
         {
-            float offsetPositionX = (transform.position.x) % textureSizeX;
-            m_background.transform.position = new Vector3(cameraTransform.position.x + offsetPositionX, transform.position.y);
+            float offsetPositionX = (m_resetingTransform.position.x) % textureSizeX;
+            m_resetingTransform.position = new Vector3(cameraTransform.position.x + offsetPositionX, m_resetingTransform.position.y);
         }
     }
 }
