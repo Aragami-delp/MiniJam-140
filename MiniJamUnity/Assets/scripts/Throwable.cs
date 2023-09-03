@@ -22,9 +22,13 @@ public class Throwable : MonoBehaviour
     public Vector3 target;
 
     private Vector3 origin;
+    
+    [SerializeField]
+    private AudioSource audioSource;
 
     float curveTime;
     float unitsToTravel;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -55,10 +59,10 @@ public class Throwable : MonoBehaviour
 
         if (curveTime > 1)
         {
+            AudioSource.PlayClipAtPoint(audioSource.clip, this.transform.position);
             GameObject.Destroy(gameObject);
             Explode();
         }
-
     }
 
     private void Explode()
