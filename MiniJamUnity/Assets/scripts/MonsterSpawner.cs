@@ -24,7 +24,8 @@ public class MonsterSpawner : MonoBehaviour
     private int monsterToSpawnNumber;
     public int MonsterOnScreen { get { return monsterOnScreen; } set { OnMonsterChange(value); } }
 
-   
+    public int BonusXpAmount;
+
     private void OnMonsterChange(int newOnScreen)
     {
         monsterOnScreen = newOnScreen;
@@ -168,9 +169,16 @@ public class MonsterSpawner : MonoBehaviour
         while (!freeSpawn);
 
 
-        GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position, transform.rotation, backgroundParent);
+       GameObject newMonster = GameObject.Instantiate(enemyToSpawn, spawnPoint + transform.position, transform.rotation, backgroundParent);
+
+        newMonster.GetComponent<Monster>().ScoreIncrease += BonusXpAmount;
 
         monsterOnScreen++;
         monsterToSpawnNumber--;
+    }
+
+    public void IncreaseBonusXp(int amount) 
+    {
+        BonusXpAmount += amount;
     }
 }

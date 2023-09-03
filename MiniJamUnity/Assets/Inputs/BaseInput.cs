@@ -89,6 +89,15 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e5c683b-d8ce-42b1-bebc-fb652028a87a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -96,17 +105,6 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""37253a98-1901-494d-9fdb-7efc0e415161"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""de015fbb-90ab-47fe-833c-cf781480b4d8"",
-                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -179,6 +177,28 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchToNextPotion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b71bab15-e9ad-4fe0-9e12-63e96e5e2314"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e87c69ed-7634-4d37-8e7b-e62fc10f9e35"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -194,6 +214,7 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
         m_CartInput_SwitchToPotion3 = m_CartInput.FindAction("SwitchToPotion3", throwIfNotFound: true);
         m_CartInput_SwitchToPotion4 = m_CartInput.FindAction("SwitchToPotion4", throwIfNotFound: true);
         m_CartInput_SwitchToNextPotion = m_CartInput.FindAction("SwitchToNextPotion", throwIfNotFound: true);
+        m_CartInput_Break = m_CartInput.FindAction("Break", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +283,7 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_CartInput_SwitchToPotion3;
     private readonly InputAction m_CartInput_SwitchToPotion4;
     private readonly InputAction m_CartInput_SwitchToNextPotion;
+    private readonly InputAction m_CartInput_Break;
     public struct CartInputActions
     {
         private @BaseInput m_Wrapper;
@@ -273,6 +295,7 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
         public InputAction @SwitchToPotion3 => m_Wrapper.m_CartInput_SwitchToPotion3;
         public InputAction @SwitchToPotion4 => m_Wrapper.m_CartInput_SwitchToPotion4;
         public InputAction @SwitchToNextPotion => m_Wrapper.m_CartInput_SwitchToNextPotion;
+        public InputAction @Break => m_Wrapper.m_CartInput_Break;
         public InputActionMap Get() { return m_Wrapper.m_CartInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -303,6 +326,9 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @SwitchToNextPotion.started += instance.OnSwitchToNextPotion;
             @SwitchToNextPotion.performed += instance.OnSwitchToNextPotion;
             @SwitchToNextPotion.canceled += instance.OnSwitchToNextPotion;
+            @Break.started += instance.OnBreak;
+            @Break.performed += instance.OnBreak;
+            @Break.canceled += instance.OnBreak;
         }
 
         private void UnregisterCallbacks(ICartInputActions instance)
@@ -328,6 +354,9 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
             @SwitchToNextPotion.started -= instance.OnSwitchToNextPotion;
             @SwitchToNextPotion.performed -= instance.OnSwitchToNextPotion;
             @SwitchToNextPotion.canceled -= instance.OnSwitchToNextPotion;
+            @Break.started -= instance.OnBreak;
+            @Break.performed -= instance.OnBreak;
+            @Break.canceled -= instance.OnBreak;
         }
 
         public void RemoveCallbacks(ICartInputActions instance)
@@ -354,5 +383,6 @@ public partial class @BaseInput: IInputActionCollection2, IDisposable
         void OnSwitchToPotion3(InputAction.CallbackContext context);
         void OnSwitchToPotion4(InputAction.CallbackContext context);
         void OnSwitchToNextPotion(InputAction.CallbackContext context);
+        void OnBreak(InputAction.CallbackContext context);
     }
 }

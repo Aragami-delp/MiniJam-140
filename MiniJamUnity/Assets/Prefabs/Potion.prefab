@@ -159,11 +159,11 @@ MonoBehaviour:
   potionType: 0
   potionSplashRange: 2
   target: {x: -5.089334, y: 3.0493283, z: 0}
+  audioSource: {fileID: 1444610172052019642}
   notResetingBackground: {fileID: 0}
   particleColor: {r: 0.73333335, g: 0.73333335, b: 0.73333335, a: 1}
   particles: {fileID: 0}
   particlesPrefab: {fileID: 3847546224009807863, guid: 18baa71240e24624798855ec86eaf8e6, type: 3}
-  audioSource: {fileID: 1444610172052019642}
 --- !u!82 &1444610172052019642
 AudioSource:
   m_ObjectHideFlags: 0
@@ -176,7 +176,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 27a41fde9502046418119d31a20cebb5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -46,9 +46,22 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField]
     private bool weaponCanFire = true;
     
+    [Header("Upgrade Params")]
+    [SerializeField]
+    private float extraPotionRange;
+
     [SerializeField]
     [Range(0.25f, 10f)]
     private float cannonCooldown;
+    public float CannonColdown { get { return cannonCooldown; } set { OnNewCannonColldown(value); } }
+
+    [SerializeField]
+    private bool canBreak,breakReady;
+    public bool CanBreak { get { return canBreak; } set { EnableBreak(value); } }
+    private float breakCooldown = 30;
+
+    [SerializeField]
+    private float BonusAmmo;
 
     [Header("For Particles")]
     [SerializeField]
@@ -114,16 +127,79 @@ public class PlayerControlls : MonoBehaviour
         ChangePotion(PotionTypes.GOLEM_POTION);
     }
     #endregion
-
-    private void ChangePotion(PotionTypes newPotion) 
+    private void ChangePotion(PotionTypes newPotion)
     {
         switchPotion.Play();
         selectedPotion = newPotion;
-        OnPotionChange?.Invoke(this,  new PotionEventArgs((int)selectedPotion, potionPrefabs[(int)selectedPotion]));
+        OnPotionChange?.Invoke(this, new PotionEventArgs((int)selectedPotion, potionPrefabs[(int)selectedPotion]));
 
         Debug.Log("ChangePotion fired");
     }
+    #region upgrades
+    private void OnNewCannonColldown(float value)
+    {
+        cannonCooldown = Math.Clamp(value, 0.1f, 2f);
+    }
+    public void ReduceCannonColldown(float amount) 
+    {
+        CannonColdown -= amount; 
+    }
 
+    public void UpgradeSplashRange(float increaseAmount)
+    {
+        extraPotionRange += increaseAmount;
+    }
+
+    public void UpgradeBreak(float cooldownReduction) 
+    {
+        if (!canBreak) 
+        {
+            // fist purchase
+            EnableBreak(true);
+            return;
+        }
+
+        breakCooldown = Math.Clamp(breakCooldown - cooldownReduction,5f,30f);
+    }
+
+    #endregion
+
+    private void EnableBreak(bool enable)
+    {
+        canBreak = enable;
+
+        if (enable)
+        {
+            cartInput.Break.performed += ActivateBreak;
+        }
+        else
+        {
+            cartInput.Break.performed -= ActivateBreak;
+        }
+    }
+    private void ActivateBreak(InputAction.CallbackContext obj)
+    {
+        if (!breakReady) 
+        {
+            return;
+        }
+        Scrolling background = notResetingBackground.parent.GetComponent<Scrolling>();
+        StartCoroutine(BreakCooldownTimer(background));
+        
+    }
+
+    private IEnumerator BreakCooldownTimer(Scrolling background)
+    {
+        float originalSpeed = background.GetSpeed();
+        background.SetSpeed(5);
+
+        breakReady = false;
+        yield return new WaitForSeconds(breakCooldown);
+        breakReady = true;
+
+        background.SetSpeed(originalSpeed);
+
+    }
 
     private void ShootCannon(InputAction.CallbackContext obj)
     {
@@ -148,6 +224,7 @@ public class PlayerControlls : MonoBehaviour
         newThrowable.target = hitData.point;
         newThrowable.potionType = selectedPotion;
         newThrowable.notResetingBackground = notResetingBackground;
+        newThrowable.PotionSplashRange += extraPotionRange;
 
         StartCoroutine(CannonCooldownTimer());
     }

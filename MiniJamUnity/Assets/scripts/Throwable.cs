@@ -18,6 +18,7 @@ public class Throwable : MonoBehaviour
     [SerializeField]
     [Range(1f,4f)]
     private float potionSplashRange;
+    public float PotionSplashRange { get { return potionSplashRange; } set { potionSplashRange = value; } }
 
     [SerializeField]
     public Vector3 target;

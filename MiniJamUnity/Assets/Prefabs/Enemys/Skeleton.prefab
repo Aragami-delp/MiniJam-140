@@ -134,9 +134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takesPotion: 3
   takesAnyPotion: 1
-  potionsNeeded: 1
+  potionsNeeded: 2
   potionsHit: 0
   hasBeenHit: 0
+  ScoreIncrease: 10
   onHitSpride: {fileID: 21300000, guid: 600067add386eb246b5759abc0c6f611, type: 3}
   audioSource: {fileID: 5391630520388258988}
 --- !u!61 &3741971365027149728
