@@ -47,7 +47,6 @@ public class MonsterSpawner : MonoBehaviour
 
     private void OnMonsterCleaned(object sender, bool wasHit)
     {
-        Debug.Log("Clean event fired");
         MonsterOnScreen--;
     }
 
@@ -83,7 +82,6 @@ public class MonsterSpawner : MonoBehaviour
                     if (hit.tag == "Enemy")
                     {
                         freeSpawn = false;
-                        Debug.Log("Fuckter spawn");
                     }
                 }
 
@@ -141,7 +139,7 @@ public class MonsterSpawner : MonoBehaviour
 
             if (timesIterated >= 20) 
             {
-                Debug.Log("Too many tries spawning Monster. Skip!");
+                Debug.LogWarning("Too many tries spawning Monster. Skip!");
                 return;
             }
 
@@ -159,7 +157,6 @@ public class MonsterSpawner : MonoBehaviour
 
             if (yBound <= -1) 
             {
-                Debug.Log("Spawn to low");
                 freeSpawn = false;
             }
 

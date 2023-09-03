@@ -1188,6 +1188,8 @@ MonoBehaviour:
   m_healthBar: {fileID: 651194526035212839}
   m_actions: {fileID: 0}
   m_levelLoader: {fileID: 0}
+  m_upgradeScreen: {fileID: 4296010287858949468}
+  m_timeBetweenUpgrades: 30
   m_godmode: 0
 --- !u!1 &2244514698110500041
 GameObject:
