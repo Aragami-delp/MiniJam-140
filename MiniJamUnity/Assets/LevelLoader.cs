@@ -23,12 +23,12 @@ public class LevelLoader : MonoBehaviour
     public void ClickStart()
     {
         startClicked = true;
-        StartCoroutine(WaitAndLoadScene(1));
+        StartCoroutine(WaitAndLoadScene(1, 3));
     }
 
     public void GoToMainMenu()
     {
-        StartCoroutine(WaitAndLoadScene(0));
+        StartCoroutine(WaitAndLoadScene(0, 0));
     }
     
     public void ClickInfos()
@@ -54,8 +54,8 @@ public class LevelLoader : MonoBehaviour
         return (float)Math.Sin((distance * Math.PI) / 2);
     }
     
-    IEnumerator WaitAndLoadScene(int _sceneIndex = 1) {
-        yield return new WaitForSeconds(3);
+    IEnumerator WaitAndLoadScene(int _sceneIndex = 1, float _waitBeforeChanging = 3) {
+        yield return new WaitForSeconds(_waitBeforeChanging);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(_sceneIndex, LoadSceneMode.Single);

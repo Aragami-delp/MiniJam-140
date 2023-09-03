@@ -69,6 +69,11 @@ public class Scrolling : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public void SpeedUp()
     {
         m_speed += m_speedIncrease;
