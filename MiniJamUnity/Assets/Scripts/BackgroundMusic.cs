@@ -10,6 +10,9 @@ public class BackgroundMusic : MonoBehaviour
     private List<float> minSpeedList;
 
     private AudioSource audioSource;
+
+    [SerializeField]
+    private float volume = 1f;
     
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class BackgroundMusic : MonoBehaviour
             Destroy(this);
         }
         DontDestroyOnLoad(this.gameObject);
+        AdjustVolume(volume);
     }
 
     private void Start()
@@ -54,5 +58,10 @@ public class BackgroundMusic : MonoBehaviour
         }
 
         return selectedClip;
+    }
+    
+    public void AdjustVolume (float newVolume) {
+        AudioListener.volume = newVolume;
+        volume = newVolume;
     }
 }

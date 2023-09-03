@@ -22,6 +22,8 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private Sprite onHitSpride;
 
+    [SerializeField] private AudioSource audioSource;
+
     public bool HasBeenHit { get { return hasBeenHit; } private set { hasBeenHit = value; } }
     
     public void OnPotionHit(PotionTypes potionHitBy) 
@@ -31,6 +33,8 @@ public class Monster : MonoBehaviour
             if (HasBeenHit) return;
 
             potionsHit++;
+            
+            audioSource.Play();
 
             if (potionsHit >= potionsNeeded) 
             {
