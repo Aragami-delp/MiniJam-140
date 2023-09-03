@@ -54,6 +54,10 @@ public class UISystem : MonoBehaviour
         AddHealth(1); // Heal for every enemy hit until full
         Scrolling.Instance.SpeedUp();
     }
+    public int GetScore() 
+    {
+        return m_score;
+    }
 
     public void LoseGame()
     {

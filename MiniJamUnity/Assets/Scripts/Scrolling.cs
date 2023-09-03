@@ -10,6 +10,10 @@ public class Scrolling : MonoBehaviour
     [SerializeField] private SpriteRenderer m_background;
     [SerializeField] private Transform m_resetingTransform;
 
+    [SerializeField] private bool lerpSpeed;
+    [SerializeField] private float lerpTarget;
+    float lerpTime = 0;
+
     private Transform cameraTransform;
     private float textureSizeX;
 
@@ -33,6 +37,23 @@ public class Scrolling : MonoBehaviour
         textureSizeX = sprite.texture.width / sprite.pixelsPerUnit * 10;
     }
 
+    private void Update()
+    {
+        if (lerpSpeed) 
+        {
+            lerpTime += Time.deltaTime;
+
+            m_speed = Mathf.Lerp(m_speed,lerpTarget,lerpTime);
+
+            if (lerpTime > 1) 
+            {
+                lerpSpeed = false;
+                lerpTime = 0;
+                lerpTarget = 0;
+            }
+        }
+    }
+
     private void LateUpdate()
     {
         transform.position += new Vector3(Time.deltaTime * (m_moveRight ? -1 : 1) * m_speed, 0, 0);
@@ -47,6 +68,12 @@ public class Scrolling : MonoBehaviour
     public void SpeedUp()
     {
         m_speed += m_speedIncrease;
+    }
+
+    public void SetSpeed(float newSpeed) 
+    {
+        lerpSpeed = true;
+        lerpTarget = newSpeed;
     }
 
     public float GetSpeed()
