@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 222015525}
   - component: {fileID: 222015524}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Info Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1008405402}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: ClickStart
+        m_MethodName: ClickInfos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -840,7 +840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &495416577
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1571,7 +1571,7 @@ GameObject:
   - component: {fileID: 1058605819}
   - component: {fileID: 1058605818}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2822,6 +2822,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1393169020}
+    - target: {fileID: 4306195588789112927, guid: e9d8d6935b5d6144ab1f7f4d46e6e82d, type: 3}
+      propertyPath: infoPage
+      value: 
+      objectReference: {fileID: 495416576}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
