@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &561638742342291583
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &930684721566809397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &2956829183170227294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,8 +2355,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1210966428469572254}
   - {fileID: 2464115981801176378}
+  - {fileID: 1210966428469572254}
   - {fileID: 4427024404427165604}
   - {fileID: 6653258586860305164}
   - {fileID: 6745412634067890956}
@@ -2952,6 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &5509621520279309165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &5547322475953970259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,6 +3945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &6050771001804238628
 GameObject:
   m_ObjectHideFlags: 0
@@ -4167,6 +4173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 500
+  priceIncrease: 30
 --- !u!1 &6503229467348643260
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,6 +4920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  priceIncrease: 30
 --- !u!1 &7478824142635603058
 GameObject:
   m_ObjectHideFlags: 0

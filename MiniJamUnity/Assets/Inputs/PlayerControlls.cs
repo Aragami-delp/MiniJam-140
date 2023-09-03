@@ -92,7 +92,6 @@ public class PlayerControlls : MonoBehaviour
 
         cartInput.Shoot.performed += ShootCannon;
 
-
         cartInput.SwitchToPotion1.performed += ChangePotion1;
         cartInput.SwitchToPotion2.performed += ChangePotion2;
         cartInput.SwitchToPotion3.performed += ChangePotion3;

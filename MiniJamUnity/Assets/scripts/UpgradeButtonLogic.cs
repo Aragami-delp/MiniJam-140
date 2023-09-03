@@ -16,6 +16,9 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField]
     private int price;
 
+    [SerializeField]
+    private float priceIncrease = 30f;
+
     bool startWasRun = false, rerunAwake;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -85,6 +88,11 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         Color greyedOutIcon = new Color(icon.color.r, icon.color.g, icon.color.b, a);
         icon.color = greyedOutIcon;
+    }
+
+    public void IncreasePrice() 
+    {
+        price *= (int)(1f + priceIncrease); 
     }
 
 }
