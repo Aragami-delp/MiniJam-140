@@ -54,6 +54,12 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField]
     Transform notResetingBackground;
 
+    [SerializeField] 
+    private AudioSource cannonShootSound;
+    
+    [SerializeField] 
+    private AudioSource switchPotion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +117,7 @@ public class PlayerControlls : MonoBehaviour
 
     private void ChangePotion(PotionTypes newPotion) 
     {
+        switchPotion.Play();
         selectedPotion = newPotion;
         OnPotionChange?.Invoke(this,  new PotionEventArgs((int)selectedPotion, potionPrefabs[(int)selectedPotion]));
 
@@ -129,6 +136,8 @@ public class PlayerControlls : MonoBehaviour
             weaponCanFire = false;
         }
 
+        cannonShootSound.Play();
+        
         Vector3 rayStart =  realCannon.transform.position;
 
         RaycastHit2D hitData =  Physics2D.Raycast(rayStart,Vector3.forward);
