@@ -45,7 +45,7 @@ public class Scrolling : MonoBehaviour
     {
         if (lerpSpeed) 
         {
-            lerpTime += Time.deltaTime;
+            lerpTime += Time.deltaTime / 4f;
 
             m_speed = Mathf.Lerp(m_speed,lerpTarget,lerpTime);
 
