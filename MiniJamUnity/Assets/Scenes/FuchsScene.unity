@@ -983,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984426058733676619, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
       propertyPath: m_speedIncrease
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6107810721736699594, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
       propertyPath: m_SortingLayer
@@ -1207,7 +1207,8 @@ MonoBehaviour:
   - {fileID: 5529672182160577471, guid: 9a56d223e10422e44957fecaf8fdb976, type: 3}
   - {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
   - {fileID: 2122104438040692464, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
-  monsterLimit: 10
+  - {fileID: 4669602129313054405, guid: e062e297b3984ac44bbd70dc9069c3ba, type: 3}
+  monsterLimit: 3
   monsterOnScreen: 0
 --- !u!61 &1984103549
 BoxCollider2D:
@@ -1274,6 +1275,10 @@ PrefabInstance:
       propertyPath: realCannon
       value: 
       objectReference: {fileID: 1950069386}
+    - target: {fileID: 6791209265224192302, guid: e580b986cb5bc654a99853f7d95847cb, type: 3}
+      propertyPath: notResetingBackground
+      value: 
+      objectReference: {fileID: 1971010895}
     - target: {fileID: 7259380875997260243, guid: e580b986cb5bc654a99853f7d95847cb, type: 3}
       propertyPath: m_RootOrder
       value: 10
