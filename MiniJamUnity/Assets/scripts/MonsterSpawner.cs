@@ -117,12 +117,10 @@ public class MonsterSpawner : MonoBehaviour
         //Skeleton Should be be less likeley 
         if (enemyToSpawn.name.StartsWith("Skeleton"))
         {
-            Debug.Log("FUck skelett");
            enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
            
            if (enemyToSpawn.name.StartsWith("Skeleton"))
            {
-                Debug.Log("Fug skelett");
                 enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
            }
         }
