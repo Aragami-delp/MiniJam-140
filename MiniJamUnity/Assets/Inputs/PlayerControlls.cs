@@ -141,8 +141,6 @@ public class PlayerControlls : MonoBehaviour
         switchPotion.Play();
         selectedPotion = newPotion;
         OnPotionChange?.Invoke(this, new PotionEventArgs((int)selectedPotion, potionPrefabs[(int)selectedPotion]));
-
-        Debug.Log("ChangePotion fired");
     }
     
     #region upgrades
@@ -217,8 +215,6 @@ public class PlayerControlls : MonoBehaviour
             return;
         }
 
-        Debug.Log("break fired");
-        
         Scrolling background = notResetingBackground.parent.GetComponent<Scrolling>();
         StartCoroutine(BreakCooldownTimer(background));
         

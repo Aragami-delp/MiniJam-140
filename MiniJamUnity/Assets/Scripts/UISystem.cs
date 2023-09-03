@@ -70,6 +70,7 @@ public class UISystem : MonoBehaviour
         m_upgradeScreen.gameObject.SetActive(true);
         m_actions.cartInput.Disable();
         Time.timeScale = 0.0001f;
+        Cursor.visible = true;
     }
 
     [ContextMenu("CloseUpgradeScreen")]
@@ -79,6 +80,7 @@ public class UISystem : MonoBehaviour
         Time.timeScale = 1f;
         m_upgradeScreen.gameObject.SetActive(false);
         m_actions.cartInput.Enable();
+        Cursor.visible = false;
     }
 
     private void OnMonsterCleaned(object sender, bool _wasHit)
