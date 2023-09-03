@@ -10,6 +10,8 @@ public class UISystem : MonoBehaviour
     [SerializeField] private ShowText m_gameOverDisplay;
     [SerializeField] private int m_maxHealth = 50;
     [SerializeField] private Image m_healthBar;
+    [SerializeField] private PlayerControlls m_actions;
+    [SerializeField] private LevelLoader m_levelLoader;
 #if UNITY_EDITOR
     [SerializeField]
 #endif 
@@ -63,6 +65,12 @@ public class UISystem : MonoBehaviour
     {
         m_gameOverDisplay.ShowTextUI(true);
         m_gameOverDisplay.SetText(m_score.ToString());
+        m_actions.cartInput.Disable();
+    }
+
+    public void GoToMainMenu()
+    {
+        m_levelLoader.GoToMainMenu();
     }
 
     public void AddHealth(int _amount = -1)
@@ -72,7 +80,6 @@ public class UISystem : MonoBehaviour
         if (m_health <= 0 && !m_godmode)
         {
             LoseGame();
-            // TODO: Disable controls
         }
     }
 }

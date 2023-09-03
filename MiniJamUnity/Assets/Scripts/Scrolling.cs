@@ -9,6 +9,7 @@ public class Scrolling : MonoBehaviour
     [SerializeField] private bool m_moveRight = true;
     [SerializeField] private SpriteRenderer m_background;
     [SerializeField] private Transform m_resetingTransform;
+    [SerializeField] private CartBounce m_cartBounce;
 
     [SerializeField] private bool lerpSpeed;
     [SerializeField] private float lerpTarget;
@@ -16,6 +17,7 @@ public class Scrolling : MonoBehaviour
 
     private Transform cameraTransform;
     private float textureSizeX;
+    private float startingSpeed;
 
     public static Scrolling Instance { get; private set; }
 
@@ -35,6 +37,8 @@ public class Scrolling : MonoBehaviour
         Sprite sprite = m_background.sprite;
         Texture2D texture = sprite.texture;
         textureSizeX = sprite.texture.width / sprite.pixelsPerUnit * 10;
+
+        startingSpeed = m_speed;
     }
 
     private void Update()
@@ -68,6 +72,9 @@ public class Scrolling : MonoBehaviour
     public void SpeedUp()
     {
         m_speed += m_speedIncrease;
+
+        float relativeSpeed = m_speed / startingSpeed;
+        m_cartBounce.AdjustWheelSpeed(relativeSpeed);
     }
 
     public void SetSpeed(float newSpeed) 

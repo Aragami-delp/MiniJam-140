@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerControlls : MonoBehaviour
 {
     BaseInput inputs;
-    BaseInput.CartInputActions cartInput;
+    public BaseInput.CartInputActions cartInput;
 
     Camera mainCam;
 

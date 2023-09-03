@@ -9,6 +9,9 @@ public class CartBounce : MonoBehaviour
     [SerializeField]
     Animator[] cartAnimators;
 
+    [SerializeField]
+    Animator[] wheelAnimators;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,13 @@ public class CartBounce : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             cartAnimators[i].enabled = true;
         }
+    }
 
-
+    public void AdjustWheelSpeed(float _newRelativeSpeed)
+    {
+        foreach (Animator wheelAnimator in wheelAnimators)
+        {
+            wheelAnimator.speed = _newRelativeSpeed;
+        }
     }
 }
