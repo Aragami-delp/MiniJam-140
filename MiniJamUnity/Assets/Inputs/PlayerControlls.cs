@@ -56,12 +56,21 @@ public class PlayerControlls : MonoBehaviour
     public float CannonColdown { get { return cannonCooldown; } set { OnNewCannonColldown(value); } }
 
     [SerializeField]
-    private bool canBreak,breakReady;
+    private bool canBreak, breakReady = true;
     public bool CanBreak { get { return canBreak; } set { EnableBreak(value); } }
+    
+    [SerializeField]
     private float breakCooldown = 30;
 
     [SerializeField]
     private float BonusAmmo;
+
+    [SerializeField]
+    private float bonusRoundInaccuracy = 3f;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float shadowPotionChance;
 
     [Header("For Particles")]
     [SerializeField]
@@ -135,6 +144,7 @@ public class PlayerControlls : MonoBehaviour
 
         Debug.Log("ChangePotion fired");
     }
+    
     #region upgrades
     private void OnNewCannonColldown(float value)
     {
@@ -155,11 +165,34 @@ public class PlayerControlls : MonoBehaviour
         if (!canBreak) 
         {
             // fist purchase
-            EnableBreak(true);
+            CanBreak = true;
             return;
         }
 
         breakCooldown = Math.Clamp(breakCooldown - cooldownReduction,5f,30f);
+    }
+
+    public void IncreaseBonusAmmo(int increaseAmount) 
+    {
+        BonusAmmo += increaseAmount;
+    }
+
+    public void IncreaseShadowPotionChance(float amount) 
+    {
+        if (shadowPotionChance <= 0f) 
+        {
+            shadowPotionChance = 0.1f;
+            return;
+        }
+        
+        if (amount >= 1) 
+        {
+            amount /= 100f;
+        }
+
+        shadowPotionChance = Math.Clamp(shadowPotionChance, 0,0.9f);
+
+        shadowPotionChance += amount;
     }
 
     #endregion
@@ -183,6 +216,9 @@ public class PlayerControlls : MonoBehaviour
         {
             return;
         }
+
+        Debug.Log("break fired");
+        
         Scrolling background = notResetingBackground.parent.GetComponent<Scrolling>();
         StartCoroutine(BreakCooldownTimer(background));
         
@@ -190,14 +226,12 @@ public class PlayerControlls : MonoBehaviour
 
     private IEnumerator BreakCooldownTimer(Scrolling background)
     {
-        float originalSpeed = background.GetSpeed();
+        breakReady = false;
         background.SetSpeed(5);
 
-        breakReady = false;
         yield return new WaitForSeconds(breakCooldown);
         breakReady = true;
 
-        background.SetSpeed(originalSpeed);
 
     }
 
@@ -213,20 +247,64 @@ public class PlayerControlls : MonoBehaviour
         }
 
         cannonShootSound.Play();
-        
-        Vector3 rayStart =  realCannon.transform.position;
 
-        RaycastHit2D hitData =  Physics2D.Raycast(rayStart,Vector3.forward);
 
-        GameObject newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion] ,gunBarrel.transform.position,transform.rotation);
+        //Normal Potion
+        CreatePotion(6);
+
+
+        for (int i = 0; i < BonusAmmo; i++)
+        {
+
+            CreatePotion(6,true);
+        }
+
+
+        StartCoroutine(CannonCooldownTimer());
+    }
+
+    private void CreatePotion(int recusionDepth, bool addRandomTarget = false, bool randomPotionType = false) 
+    {
+        if (recusionDepth <= 0) 
+        {
+            return;
+        }
+
+        Vector3 rayStart = realCannon.transform.position;
+
+        RaycastHit2D hitData = Physics2D.Raycast(rayStart, Vector3.forward);
+
+        GameObject newPotion;
+
+        if (randomPotionType)
+        {
+            newPotion = GameObject.Instantiate(potionPrefabs[UnityEngine.Random.Range(0, potionPrefabs.Length)], gunBarrel.transform.position, transform.rotation);
+        }
+        else 
+        {
+            newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion], gunBarrel.transform.position, transform.rotation);
+        }
 
         Throwable newThrowable = newPotion.GetComponent<Throwable>();
-        newThrowable.target = hitData.point;
-        newThrowable.potionType = selectedPotion;
+
+        Vector2 randomTarget = Vector2.zero;
+
+        if (addRandomTarget) 
+        {
+            randomTarget.x = UnityEngine.Random.Range(-bonusRoundInaccuracy, bonusRoundInaccuracy);
+            randomTarget.y = UnityEngine.Random.Range(-bonusRoundInaccuracy, bonusRoundInaccuracy);
+        }
+
+        newThrowable.target = hitData.point + randomTarget;
+        //newThrowable.potionType;
         newThrowable.notResetingBackground = notResetingBackground;
         newThrowable.PotionSplashRange += extraPotionRange;
 
-        StartCoroutine(CannonCooldownTimer());
+        if (UnityEngine.Random.value <= shadowPotionChance) 
+        {
+            CreatePotion(recusionDepth - 1,true,true);
+        }
+
     }
 
     private IEnumerator CannonCooldownTimer() 

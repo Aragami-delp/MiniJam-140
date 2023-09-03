@@ -139,6 +139,7 @@ MonoBehaviour:
   hasBeenHit: 0
   onHitSpride: {fileID: 21300000, guid: f6827cab7110dcd418fe62546c3d2958, type: 3}
   audioSource: {fileID: -5768416934551666413}
+  ScoreIncrease: 1
 --- !u!61 &1515143427051973631
 BoxCollider2D:
   m_ObjectHideFlags: 0
