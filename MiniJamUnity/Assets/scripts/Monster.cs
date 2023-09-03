@@ -22,10 +22,13 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private Sprite onHitSpride;
 
+
     [SerializeField] private AudioSource audioSource;
 
     public bool HasBeenHit { get { return hasBeenHit; } private set { hasBeenHit = value; } }
-    
+
+    public int ScoreIncrease;
+
     public void OnPotionHit(PotionTypes potionHitBy) 
     {
         if (potionHitBy == takesPotion || takesAnyPotion) 
@@ -39,7 +42,7 @@ public class Monster : MonoBehaviour
             if (potionsHit >= potionsNeeded) 
             {
                 HasBeenHit = true;
-                UISystem.Instance.IncreaseScore();
+                UISystem.Instance.IncreaseScore(ScoreIncrease);
                 transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = onHitSpride;
             }
         }
