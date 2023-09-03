@@ -8,6 +8,7 @@ public class UISystem : MonoBehaviour
 {
     [SerializeField] private ShowText m_scoreDisplay;
     [SerializeField] private ShowText m_gameOverDisplay;
+    [SerializeField] private RectTransform m_gameOverButton;
     [SerializeField] private int m_maxHealth = 50;
     [SerializeField] private Image m_healthBar;
     [SerializeField] private PlayerControlls m_actions;
@@ -36,6 +37,7 @@ public class UISystem : MonoBehaviour
     private void Start()
     {
         m_gameOverDisplay.ShowTextUI(false);
+        m_gameOverButton.gameObject.SetActive(false);
         m_scoreDisplay.ShowTextUI(true);
         m_health = m_maxHealth;
         MonsterCleaning.OnMonsterDestroyed += OnMonsterCleaned;
@@ -63,6 +65,7 @@ public class UISystem : MonoBehaviour
 
     public void LoseGame()
     {
+        m_gameOverButton.gameObject.SetActive(true);
         m_gameOverDisplay.ShowTextUI(true);
         m_gameOverDisplay.SetText(m_score.ToString());
         m_actions.cartInput.Disable();

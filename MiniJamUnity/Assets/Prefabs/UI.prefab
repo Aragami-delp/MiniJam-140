@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scoreDisplay: {fileID: 438006606661559944}
   m_gameOverDisplay: {fileID: 4806679576942500756}
+  m_gameOverButton: {fileID: 2030430294115399528}
   m_maxHealth: 5
   m_healthBar: {fileID: 651194526035212839}
   m_actions: {fileID: 0}
@@ -6886,7 +6887,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 499193915627598408, guid: 552dd8cd678a11b44a9af2c0c0b580db, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: GameOverButton
       objectReference: {fileID: 0}
     - target: {fileID: 2110111646497555790, guid: 552dd8cd678a11b44a9af2c0c0b580db, type: 3}
       propertyPath: m_Pivot.x

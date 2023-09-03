@@ -33,7 +33,7 @@ public class LevelLoader : MonoBehaviour
     
     public void ClickInfos()
     {
-        infoPage.SetActive(!infoPage.active);
+        infoPage.SetActive(!infoPage.activeSelf);
     }
 
     private void Update()
