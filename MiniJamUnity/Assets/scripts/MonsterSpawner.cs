@@ -115,8 +115,6 @@ public class MonsterSpawner : MonoBehaviour
 
         Vector2 colliderSize = enemyToSpawn.transform.GetComponent<BoxCollider2D>().size;
 
-        Debug.Log(colliderSize);
-
         int timesIterated = 0;
 
         do
@@ -141,6 +139,16 @@ public class MonsterSpawner : MonoBehaviour
                 {
                     freeSpawn = false;
                 }
+            }
+
+            //check if Box is under y -1
+
+            float yBound = spawnPoint.y - colliderSize.y / 2; 
+
+            if (yBound <= -1) 
+            {
+                Debug.Log("Spawn to low");
+                freeSpawn = false;
             }
 
         }
