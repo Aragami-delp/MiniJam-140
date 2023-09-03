@@ -48,4 +48,9 @@ public class Scrolling : MonoBehaviour
     {
         m_speed += m_speedIncrease;
     }
+
+    public float GetSpeed()
+    {
+        return m_speed;
+    }
 }
