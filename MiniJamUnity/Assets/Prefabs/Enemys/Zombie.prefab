@@ -52,7 +52,6 @@ MonoBehaviour:
   potionsNeeded: 1
   potionsHit: 0
   hasBeenHit: 0
-  animationIntensity: 0
   onHitSpride: {fileID: 21300000, guid: e9627d0097caa424a82088fc11cc01bc, type: 3}
 --- !u!61 &2869166302037129313
 BoxCollider2D:
@@ -109,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 2122104438040692464}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fd0644cebec8734993143968777ee39, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
