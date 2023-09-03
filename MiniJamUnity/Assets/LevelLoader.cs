@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
@@ -16,11 +17,18 @@ public class LevelLoader : MonoBehaviour
     
     [SerializeField] 
     private Animator transition;
+
+    [SerializeField] private GameObject infoPage;
     
     public void ClickStart()
     {
         startClicked = true;
         StartCoroutine(WaitAndLoadScene());
+    }
+    
+    public void ClickInfos()
+    {
+        infoPage.SetActive(!infoPage.active);
     }
 
     private void Update()
