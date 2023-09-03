@@ -41,7 +41,7 @@ public class UISystem : MonoBehaviour
 
     private void OnMonsterCleaned(object sender, bool _wasHit)
     {
-        if (_wasHit)
+        if (!_wasHit)
         {
             AddHealth(-1);
         }
@@ -64,7 +64,7 @@ public class UISystem : MonoBehaviour
     public void AddHealth(int _amount = -1)
     {
         m_health = Mathf.Clamp(m_health + _amount, 0, m_maxHealth);
-        m_healthBar.fillAmount = m_health / m_maxHealth;
+        m_healthBar.fillAmount = m_health / (float)m_maxHealth;
         if (m_health <= 0 && !m_godmode)
         {
             LoseGame();
