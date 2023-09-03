@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702386694373348147}
   - component: {fileID: 1508480390927805781}
+  - component: {fileID: 1151696247903115773}
   m_Layer: 0
   m_Name: WheelFront
   m_TagString: Untagged
@@ -130,6 +131,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1151696247903115773
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467185402710159805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8271e9acd51c8cc4f98a60bd457abee4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &492717290612236560
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6060716051283286608}
   - component: {fileID: 901554280598891638}
+  - component: {fileID: 2722059369683192533}
   m_Layer: 0
   m_Name: WheelFront
   m_TagString: Untagged
@@ -214,6 +237,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2722059369683192533
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492717290612236560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8271e9acd51c8cc4f98a60bd457abee4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &702846621551431020
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +372,7 @@ Transform:
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1499099193931849096}
   - {fileID: 6060716051283286608}
   - {fileID: 2678200165907472339}
   m_Father: {fileID: 7259380875997260243}
@@ -449,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7645683846654684582}
   - component: {fileID: 8697419441327719218}
-  - component: {fileID: 6299455413708990934}
+  - component: {fileID: 8360513429601028199}
   m_Layer: 0
   m_Name: cannonCart
   m_TagString: Untagged
@@ -528,7 +573,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6299455413708990934
+--- !u!95 &8360513429601028199
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -559,6 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014257431664106152}
   - component: {fileID: 7081306343408076247}
+  - component: {fileID: 407427678828741917}
   m_Layer: 0
   m_Name: WheelFront
   m_TagString: Untagged
@@ -633,6 +679,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &407427678828741917
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3872514784510184357}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8271e9acd51c8cc4f98a60bd457abee4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3937225697911279146
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,8 +844,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartAnimators:
   - {fileID: 5741620317192684756}
-  - {fileID: 8198413016517440445}
-  - {fileID: 6299455413708990934}
+  - {fileID: 7852648121885929908}
+  - {fileID: 8360513429601028199}
 --- !u!1 &4650791156579001784
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2385576712112540242}
   - component: {fileID: 7284594698253742627}
+  - component: {fileID: 901791784601056620}
   m_Layer: 0
   m_Name: WheelBack
   m_TagString: Untagged
@@ -948,6 +1016,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &901791784601056620
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5543514406187329118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8271e9acd51c8cc4f98a60bd457abee4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6970157219777480296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1152,112 @@ Transform:
   m_Father: {fileID: 400669835055581272}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7422562988976809545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499099193931849096}
+  - component: {fileID: 5726529923041694167}
+  - component: {fileID: 1786337709496753058}
+  m_Layer: 0
+  m_Name: Witch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499099193931849096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422562988976809545}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.082, y: 0.686, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1418876105484926683}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5726529923041694167
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422562988976809545}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b8e813a6f9790349818e6ae73a875cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1786337709496753058
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422562988976809545}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -2041930671
+  m_SortingLayer: 3
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: cbce795a965909543bd3f02ce6997ce2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6, y: 3.375}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &7472870757458858623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9037796699961927665}
   - component: {fileID: 6332754066630195291}
-  - component: {fileID: 7017478420044441851}
+  - component: {fileID: 8425138601267603361}
   m_Layer: 0
   m_Name: WheelBack
   m_TagString: Untagged
@@ -1135,12 +1330,12 @@ Transform:
   m_GameObject: {fileID: 8466766570145788299}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3309999, y: -0.14800003, z: -0.03}
-  m_LocalScale: {x: 0.15499999, y: 0.15499999, z: 1}
+  m_LocalScale: {x: 0.155, y: 0.15499999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541789276267129608}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 163.26936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.078001}
 --- !u!212 &6332754066630195291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1181,7 +1376,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2041930671
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2925376a3beba7e4ebf1aee77b7ce015, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1193,7 +1388,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7017478420044441851
+--- !u!95 &8425138601267603361
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1224,7 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4178945319586990318}
   - component: {fileID: 1371072763908862717}
-  - component: {fileID: 8198413016517440445}
+  - component: {fileID: 7852648121885929908}
   m_Layer: 0
   m_Name: CartSegment2
   m_TagString: Untagged
@@ -1302,7 +1497,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8198413016517440445
+--- !u!95 &7852648121885929908
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1333,6 +1528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2678200165907472339}
   - component: {fileID: 7412560592846058734}
+  - component: {fileID: 5888648089739743970}
   m_Layer: 0
   m_Name: WheelBack
   m_TagString: Untagged
@@ -1407,6 +1603,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5888648089739743970
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911908611689913749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8271e9acd51c8cc4f98a60bd457abee4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8889326841200337555
 PrefabInstance:
   m_ObjectHideFlags: 0
