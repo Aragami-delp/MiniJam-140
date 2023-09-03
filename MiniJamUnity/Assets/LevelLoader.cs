@@ -23,7 +23,12 @@ public class LevelLoader : MonoBehaviour
     public void ClickStart()
     {
         startClicked = true;
-        StartCoroutine(WaitAndLoadScene());
+        StartCoroutine(WaitAndLoadScene(1));
+    }
+
+    public void GoToMainMenu()
+    {
+        StartCoroutine(WaitAndLoadScene(0));
     }
     
     public void ClickInfos()
@@ -33,13 +38,13 @@ public class LevelLoader : MonoBehaviour
 
     private void Update()
     {
-        if (startClicked)
+        if (startClicked && cart != null && target != null)
         {
             float distance =  Vector3.Distance(target.position, cart.transform.position);
 
             float normalizedDistance = Math.Clamp(distance, 1 , 20) / 20;
         
-            cart.transform.position = Vector3.MoveTowards(cart.transform.position, target.position,CalcSpeed(normalizedDistance) * 10 * Time.deltaTime);
+            cart.transform.position = Vector3.MoveTowards(cart.transform.position, target.position, CalcSpeed(normalizedDistance) * 10 * Time.deltaTime);
         }
 
     }
@@ -49,10 +54,10 @@ public class LevelLoader : MonoBehaviour
         return (float)Math.Sin((distance * Math.PI) / 2);
     }
     
-    IEnumerator WaitAndLoadScene() {
+    IEnumerator WaitAndLoadScene(int _sceneIndex = 1) {
         yield return new WaitForSeconds(3);
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(1,LoadSceneMode.Single);
+        SceneManager.LoadScene(_sceneIndex, LoadSceneMode.Single);
     }
 }
