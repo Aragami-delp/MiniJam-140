@@ -1145,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundImage
       objectReference: {fileID: 0}
+    - target: {fileID: 5984426058733676619, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
+      propertyPath: m_speedIncrease
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6107810721736699594, guid: 4aee405381417aa4ab7b02ab68a41069, type: 3}
       propertyPath: m_SortingLayer
       value: -1

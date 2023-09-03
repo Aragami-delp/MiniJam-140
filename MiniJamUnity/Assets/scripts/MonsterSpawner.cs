@@ -125,14 +125,14 @@ public class MonsterSpawner : MonoBehaviour
             spawnPoint.x = UnityEngine.Random.Range(-spawnAreaX, spawnAreaX);
             spawnPoint.y = UnityEngine.Random.Range(-spawnAreaY, spawnAreaY);
 
-            Collider2D[] hits = Physics2D.OverlapBoxAll(spawnPoint, colliderSize * 2f , transform.eulerAngles.z);
+            Collider2D[] hits = Physics2D.OverlapBoxAll(spawnPoint + transform.position, colliderSize , transform.eulerAngles.z);
 
             timesIterated++;
 
             if (timesIterated >= 20) 
             {
                 Debug.Log("Too many tries spawning Monster. Skip!");
-                break;
+                return;
             }
 
             foreach (Collider2D hit in hits)
