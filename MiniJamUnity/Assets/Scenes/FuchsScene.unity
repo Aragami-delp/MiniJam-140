@@ -1233,13 +1233,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4487580426734115171, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 704da6751136708489d93dc35cce7128, type: 2}
     - target: {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_Name
       value: Wraith
       objectReference: {fileID: 0}
     - target: {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4889242844584162521, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
       propertyPath: m_RootOrder
@@ -1515,7 +1519,7 @@ MonoBehaviour:
   - {fileID: 5529672182160577471, guid: 9a56d223e10422e44957fecaf8fdb976, type: 3}
   - {fileID: 4431925654270898912, guid: 944c3389423912e45b4edf4309c8f778, type: 3}
   - {fileID: 2122104438040692464, guid: 8603761783c4e5f49991e7ca8f8e7a4c, type: 3}
-  monsterLimit: 6
+  monsterLimit: 10
   monsterOnScreen: 0
 --- !u!61 &1984103549
 BoxCollider2D:
