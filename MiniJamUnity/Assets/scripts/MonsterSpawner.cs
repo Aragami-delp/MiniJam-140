@@ -113,6 +113,19 @@ public class MonsterSpawner : MonoBehaviour
 
         GameObject enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
 
+        //Skeleton Should be be less likeley 
+        if (enemyToSpawn.name.StartsWith("Skeleton"))
+        {
+            Debug.Log("FUck skelett");
+           enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
+           
+           if (enemyToSpawn.name.StartsWith("Skeleton"))
+           {
+                Debug.Log("Fug skelett");
+                enemyToSpawn = monsterPrefabs[UnityEngine.Random.Range(0, monsterPrefabs.Length)];
+           }
+        }
+
         Vector2 colliderSize = enemyToSpawn.transform.GetComponent<BoxCollider2D>().size;
 
         int timesIterated = 0;

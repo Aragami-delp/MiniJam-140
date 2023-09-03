@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 347390365062967816, guid: 7054f795f641037438bd705b473f2b55, type: 3}
+      propertyPath: potionType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 347390365062967816, guid: 7054f795f641037438bd705b473f2b55, type: 3}
+      propertyPath: particleColor.b
+      value: 0.04705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 347390365062967816, guid: 7054f795f641037438bd705b473f2b55, type: 3}
+      propertyPath: particleColor.g
+      value: 0.8705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 347390365062967816, guid: 7054f795f641037438bd705b473f2b55, type: 3}
+      propertyPath: particleColor.r
+      value: 0.08235294
+      objectReference: {fileID: 0}
     - target: {fileID: 3881293115667578486, guid: 7054f795f641037438bd705b473f2b55, type: 3}
       propertyPath: m_Name
       value: Potion Variant 2
@@ -18,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b431f680605257545aececb8ef7e680e, type: 3}
     - target: {fileID: 9199168307809816178, guid: 7054f795f641037438bd705b473f2b55, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9199168307809816178, guid: 7054f795f641037438bd705b473f2b55, type: 3}
       propertyPath: m_LocalPosition.x

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6645516804814771187}
   - component: {fileID: 5391630520388258988}
   m_Layer: 0
-  m_Name: Skelett
+  m_Name: Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

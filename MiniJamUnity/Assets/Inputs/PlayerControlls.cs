@@ -50,6 +50,10 @@ public class PlayerControlls : MonoBehaviour
     [Range(0.25f, 10f)]
     private float cannonCooldown;
 
+    [Header("For Particles")]
+    [SerializeField]
+    Transform notResetingBackground;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,8 +134,11 @@ public class PlayerControlls : MonoBehaviour
         RaycastHit2D hitData =  Physics2D.Raycast(rayStart,Vector3.forward);
 
         GameObject newPotion = GameObject.Instantiate(potionPrefabs[(int)selectedPotion] ,gunBarrel.transform.position,transform.rotation);
-        newPotion.GetComponent<Throwable>().target = hitData.point;
-        newPotion.GetComponent<Throwable>().potionType = selectedPotion;
+
+        Throwable newThrowable = newPotion.GetComponent<Throwable>();
+        newThrowable.target = hitData.point;
+        newThrowable.potionType = selectedPotion;
+        newThrowable.notResetingBackground = notResetingBackground;
 
         StartCoroutine(CannonCooldownTimer());
     }

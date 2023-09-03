@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7776424476227810452
 SpriteRenderer:
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2041930671
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7c36dbf0688fa5543b39ef53ae96daab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -159,6 +159,10 @@ MonoBehaviour:
   potionType: 0
   potionSplashRange: 2
   target: {x: -5.089334, y: 3.0493283, z: 0}
+  notResetingBackground: {fileID: 0}
+  particleColor: {r: 0.73333335, g: 0.73333335, b: 0.73333335, a: 1}
+  particles: {fileID: 0}
+  particlesPrefab: {fileID: 3847546224009807863, guid: 18baa71240e24624798855ec86eaf8e6, type: 3}
   audioSource: {fileID: 1444610172052019642}
 --- !u!82 &1444610172052019642
 AudioSource:
