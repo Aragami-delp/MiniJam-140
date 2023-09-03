@@ -14,10 +14,16 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
     private TMP_Text priceText;
 
     [SerializeField]
+    UISystem uiInstance;
+
+    [SerializeField]
     private int price;
 
     [SerializeField]
     private float priceIncrease = 30f;
+
+    [SerializeField]
+    private int upgradeAvailable= 5;
 
     bool startWasRun = false, rerunAwake;
 
@@ -38,11 +44,13 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
 
         if (rerunAwake) 
         {
-            Awake();
+            OnEnable();
         }
+
+        button.onClick.AddListener(BuyUpgrade);
     }
 
-    void Awake()
+    public void OnEnable()
     {
         if (!startWasRun) 
         {
@@ -64,7 +72,7 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
             }
         }
 
-        if (UISystem.Instance.GetScore() < price ) 
+        if (uiInstance.GetScore() < price ) 
         {
             priceText.color = Color.red;
             button.interactable = false;
@@ -88,6 +96,19 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         Color greyedOutIcon = new Color(icon.color.r, icon.color.g, icon.color.b, a);
         icon.color = greyedOutIcon;
+    }
+
+    public void BuyUpgrade() 
+    {
+        upgradeAvailable--;
+        
+        if (upgradeAvailable == 0) 
+        {
+            button.interactable = false;    
+        }
+
+        UISystem.Instance.IncreaseScore(-price);
+        IncreasePrice();
     }
 
     public void IncreasePrice() 
