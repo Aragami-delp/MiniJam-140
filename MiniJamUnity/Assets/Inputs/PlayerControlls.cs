@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControlls : MonoBehaviour
 {
@@ -45,8 +46,11 @@ public class PlayerControlls : MonoBehaviour
 
     [SerializeField]
     private bool weaponCanFire = true;
-    
+
     [Header("Upgrade Params")]
+    [SerializeField]
+    private Slider breakUISlider;
+
     [SerializeField]
     private float extraPotionRange;
 
@@ -101,7 +105,7 @@ public class PlayerControlls : MonoBehaviour
         mainCam = Camera.main;
 
         Cursor.visible = false;
-
+        
     }
     #region dont look
     private void ChangeNextPotion(InputAction.CallbackContext obj)
@@ -197,6 +201,8 @@ public class PlayerControlls : MonoBehaviour
     private void EnableBreak(bool enable)
     {
         canBreak = enable;
+        
+        breakUISlider.gameObject.SetActive(enable);
 
         if (enable)
         {
@@ -223,11 +229,18 @@ public class PlayerControlls : MonoBehaviour
     {
         breakReady = false;
         background.SetSpeed(5);
-
-        yield return new WaitForSeconds(breakCooldown);
+        float cooldownDone = 0;
+        breakUISlider.value = 0;
+        breakUISlider.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.red;
+        while (breakCooldown > cooldownDone) 
+        {
+            yield return new WaitForSeconds(0.5f);
+            cooldownDone += 0.5f;
+            breakUISlider.value = cooldownDone / breakCooldown;
+        }
+        breakUISlider.value = 1;
+        breakUISlider.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.cyan;
         breakReady = true;
-
-
     }
 
     private void ShootCannon(InputAction.CallbackContext obj)
