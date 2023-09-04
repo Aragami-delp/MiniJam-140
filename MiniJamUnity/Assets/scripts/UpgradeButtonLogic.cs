@@ -85,6 +85,7 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
         else 
         {
             priceText.color = Color.black;
+            button.interactable = true;
         }
 
 
@@ -113,7 +114,11 @@ public class UpgradeButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void IncreasePrice() 
     {
-        price *= (int)(1f + priceIncrease); 
+        float pricef = (price * (1f + priceIncrease));
+
+        price = (int)pricef;
+
+        priceText.text = price.ToString();
     }
 
 }
