@@ -16,6 +16,9 @@ public class UISystem : MonoBehaviour
     [SerializeField] private LevelLoader m_levelLoader;
     [SerializeField] private RectTransform m_upgradeScreen;
     [SerializeField] private int m_timeBetweenUpgrades = 60; // int to more easily adjust in inspector
+
+    [SerializeField] private Slider rangeIndicator;
+    
 #if UNITY_EDITOR
     [SerializeField]
 #endif 
@@ -54,6 +57,8 @@ public class UISystem : MonoBehaviour
         if (isGameOver) return;
 
         timeSinceLastUpgrade += Time.deltaTime;
+
+        rangeIndicator.value = timeSinceLastUpgrade / m_timeBetweenUpgrades;
         if (timeSinceLastUpgrade >= m_timeBetweenUpgrades)
         {
             OpenUpgradeScreen();

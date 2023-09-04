@@ -50,6 +50,8 @@ public class PlayerControlls : MonoBehaviour
     [Header("Upgrade Params")]
     [SerializeField]
     private Slider breakUISlider;
+    [SerializeField]
+    private GameObject breaksObj;
 
     [SerializeField]
     private float extraPotionRange;
@@ -203,6 +205,7 @@ public class PlayerControlls : MonoBehaviour
         canBreak = enable;
         
         breakUISlider.gameObject.SetActive(enable);
+        breaksObj.SetActive(enable);
 
         if (enable)
         {
