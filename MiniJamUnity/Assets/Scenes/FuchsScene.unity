@@ -2508,7 +2508,7 @@ PrefabInstance:
       objectReference: {fileID: 2024404713}
     - target: {fileID: 7427871409010424785, guid: 6dcbba9f47b76d541a8e7e6b54054d69, type: 3}
       propertyPath: m_godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427871409010424785, guid: 6dcbba9f47b76d541a8e7e6b54054d69, type: 3}
       propertyPath: m_levelLoader
